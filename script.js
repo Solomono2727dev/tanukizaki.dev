@@ -1,22 +1,19 @@
-// ========== LOADING SCREEN ==========
-const loader = document.getElementById('page-loader');
+// ========== FAKE LOADING BAR ==========
 const loaderBar = document.getElementById('loader-bar');
+const pageLoader = document.getElementById('page-loader');
 
 let progress = 0;
-const loadInterval = setInterval(() => {
-    progress += Math.random() * 10;
+const fakeLoad = setInterval(() => {
+    progress += Math.random() * 8; // random increment
     if(progress > 100) progress = 100;
     loaderBar.style.width = progress + '%';
+
     if(progress >= 100){
-        clearInterval(loadInterval);
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 400);
-            // Animate hero texts after loading
-            animateHero();
-        }, 300);
+        clearInterval(fakeLoad);
+        setTimeout(() => pageLoader.style.display = 'none', 300);
+        animateHero();
     }
-}, 150);
+}, 100);
 
 // ========== HERO TEXT ANIMATION ==========
 function animateHero(){
@@ -25,7 +22,7 @@ function animateHero(){
     const subText = document.querySelector('.sub-text');
     const heroBtn = document.querySelector('.hero-btn');
 
-    [title, subtitle, subText, heroBtn].forEach((el, i) => {
+    [title, subtitle, subText, heroBtn].forEach((el,i)=>{
         el.style.transition = `opacity 1s ease ${i*0.3}s`;
         el.style.opacity = 1;
     });
@@ -33,12 +30,15 @@ function animateHero(){
 
 // ========== LIGHT / DARK MODE ==========
 const themeToggle = document.getElementById('theme-toggle');
-if(localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+if(localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-mode');
+    themeToggle.textContent = '☀️';
+}
 
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('click', ()=>{
     document.body.classList.toggle('light-mode');
-    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
     themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
 });
 
 // ========== STAFF CARDS ==========
@@ -60,30 +60,22 @@ const staff = [
 ];
 
 const staffContainer = document.getElementById('staff-container');
-
-function discordDefaultAvatar(id){ return `https://cdn.discordapp.com/embed/avatars/${id % 5}.png`; }
-
-staff.forEach(member => {
+staff.forEach(m=>{
     const card = document.createElement('div');
     card.className = 'staff-card';
-    card.innerHTML = `
-        <img src="${discordDefaultAvatar(member.id)}" alt="${member.name}">
-        <h3>${member.name}</h3>
-        <p>${member.role}</p>
-    `;
+    card.innerHTML = `<img src="https://cdn.discordapp.com/embed/avatars/${m.id % 5}.png" alt="${m.name}"><h3>${m.name}</h3><p>${m.role}</p>`;
     staffContainer.appendChild(card);
 });
 
 // ========== SCROLL REVEAL ==========
-const revealElements = document.querySelectorAll('.reveal');
-window.addEventListener('scroll', () => {
-    const triggerBottom = window.innerHeight * 0.85;
-    revealElements.forEach(el => {
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+    const trigger = window.innerHeight*0.85;
+    reveals.forEach(el=>{
         const top = el.getBoundingClientRect().top;
-        if(top < triggerBottom){
+        if(top < trigger){
             el.style.opacity = 1;
             el.style.transform = 'translateY(0)';
-            el.style.transition = 'all 0.8s ease-out';
         } else {
             el.style.opacity = 0;
             el.style.transform = 'translateY(50px)';
@@ -97,4 +89,4 @@ fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true")
 .then(data=>{
     document.getElementById('member-count').textContent = data.approximate_member_count;
 })
-.catch(()=> document.getElementById('member-count').textContent = "N/A");
+.catch(()=>document.getElementById('member-count').textContent = "N/A");
