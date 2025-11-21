@@ -1,69 +1,64 @@
 * {
-list-style: none;
-display: flex;
-gap: 20px;
-align-items: center;
-}
-
-
-.navbar a {
-text-decoration: none;
-color: var(--text);
-font-weight: bold;
-}
-
-
-#themeToggle {
-background: none;
-border: none;
-font-size: 20px;
-cursor: pointer;
-color: var(--text);
-}
-
-
-.hero {
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-padding: 20px;
-margin-top: 60px;
-}
-
-
-.hero .join-btn {
-margin-top: 20px;
-padding: 12px 25px;
-background: #5865f2;
-color: white;
-border-radius: 8px;
-text-decoration: none;
-font-size: 18px;
-}
-
-
 .member-box {
-margin-top: 30px;
+margin-top: 25px;
+background: var(--card);
+padding: 12px 18px;
+border-radius: 8px;
+font-weight: 600;
+display: inline-block;
+}
+
+
+/* SECTIONS */
+section {
+padding: 100px 80px;
+}
+
+
+h2 {
+font-size: 32px;
+margin-bottom: 20px;
+}
+
+
+/* STAFF */
+.staff-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 25px;
+}
+
+
+.staff-card {
 background: var(--card);
 padding: 15px;
-border-radius: 10px;
-display: flex;
-align-items: center;
-gap: 15px;
+border-radius: 12px;
+text-align: center;
+transition: 0.3s;
 }
 
 
-.server-icon {
-width: 60px;
-height: 60px;
+.staff-card:hover {
+transform: translateY(-5px);
+}
+
+
+.staff-card img {
+width: 90px;
+height: 90px;
 border-radius: 50%;
 }
 
 
-.about, .credits {
-padding: 80px 20px;
-text-align: center;
+/* Fade Animation */
+[data-fade] {
+opacity: 0;
+transform: translateY(20px);
+transition: 0.8s;
+}
+
+
+[data-fade].visible {
+opacity: 1;
+transform: translateY(0);
 }
