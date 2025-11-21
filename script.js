@@ -1,4 +1,47 @@
-/* ------------------ STAFF CONFIG ------------------ */
+// ========== LOADING SCREEN ==========
+const loader = document.getElementById('page-loader');
+const loaderBar = document.getElementById('loader-bar');
+
+let progress = 0;
+const loadInterval = setInterval(() => {
+    progress += Math.random() * 10;
+    if(progress > 100) progress = 100;
+    loaderBar.style.width = progress + '%';
+    if(progress >= 100){
+        clearInterval(loadInterval);
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 400);
+            // Animate hero texts after loading
+            animateHero();
+        }, 300);
+    }
+}, 150);
+
+// ========== HERO TEXT ANIMATION ==========
+function animateHero(){
+    const title = document.querySelector('.title');
+    const subtitle = document.querySelector('.subtitle');
+    const subText = document.querySelector('.sub-text');
+    const heroBtn = document.querySelector('.hero-btn');
+
+    [title, subtitle, subText, heroBtn].forEach((el, i) => {
+        el.style.transition = `opacity 1s ease ${i*0.3}s`;
+        el.style.opacity = 1;
+    });
+}
+
+// ========== LIGHT / DARK MODE ==========
+const themeToggle = document.getElementById('theme-toggle');
+if(localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+});
+
+// ========== STAFF CARDS ==========
 const staff = [
     { role: "Founder", name: "Meow", id: "1275059869799415819" },
     { role: "Co Owner", name: "Lisa", id: "1000315559868645427" },
@@ -16,74 +59,42 @@ const staff = [
     { role: "Moderator", name: "Shivam", id: "748050700092571659" }
 ];
 
-function discordAvatar(id) {
-    return `https://cdn.discordapp.com/avatars/${id}/${id}.png?size=256`;
-}
+const staffContainer = document.getElementById('staff-container');
 
-const staffContainer = document.getElementById("staff-container");
+function discordDefaultAvatar(id){ return `https://cdn.discordapp.com/embed/avatars/${id % 5}.png`; }
 
 staff.forEach(member => {
-    const card = document.createElement("div");
-    card.className = "staff-card";
-
+    const card = document.createElement('div');
+    card.className = 'staff-card';
     card.innerHTML = `
-        <img src="${discordAvatar(member.id)}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/1.png'">
+        <img src="${discordDefaultAvatar(member.id)}" alt="${member.name}">
         <h3>${member.name}</h3>
         <p>${member.role}</p>
     `;
-
     staffContainer.appendChild(card);
 });
 
-/* ------------------ LIGHT / DARK MODE ------------------ */
-const themeToggle = document.getElementById("theme-toggle");
-
-if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light-mode");
-    themeToggle.textContent = "☀️";
-}
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-
-    if (document.body.classList.contains("light-mode")) {
-        themeToggle.textContent = "☀️";
-        localStorage.setItem("theme", "light");
-    } else {
-        themeToggle.textContent = "🌙";
-        localStorage.setItem("theme", "dark");
-    }
-});
-
-/* ------------------ MEMBER COUNT ------------------ */
-fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true")
-.then(res => res.json())
-.then(data => {
-    document.getElementById("memberCount").textContent = data.approximate_member_count;
-})
-.catch(() => {
-    document.getElementById("memberCount").textContent = "Error";
-});
-
-/* ------------------ SCROLL REVEAL ------------------ */
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
-    reveals.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            el.classList.add("visible");
+// ========== SCROLL REVEAL ==========
+const revealElements = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    revealElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < triggerBottom){
+            el.style.opacity = 1;
+            el.style.transform = 'translateY(0)';
+            el.style.transition = 'all 0.8s ease-out';
+        } else {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(50px)';
         }
     });
-}
+});
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
-/* ------------------ LOADER ------------------ */
-window.onload = () => {
-    setTimeout(() => {
-        document.getElementById("loader").style.opacity = "0";
-        setTimeout(() => document.getElementById("loader").style.display = "none", 600);
-    }, 200);
-};
+// ========== LIVE MEMBER WIDGET ==========
+fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true")
+.then(res=>res.json())
+.then(data=>{
+    document.getElementById('member-count').textContent = data.approximate_member_count;
+})
+.catch(()=> document.getElementById('member-count').textContent = "N/A");
