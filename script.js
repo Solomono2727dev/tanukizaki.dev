@@ -15,9 +15,8 @@ const staff = [
     { role: "Moderator", name: "Shivam", id: "748050700092571659" }
 ];
 
-// Discord CDN avatar format
-function getAvatarURL(id) {
-    return `https://cdn.discordapp.com/avatars/${id}/${id}.png?size=256`;
+function discordDefaultAvatar(id) {
+    return `https://cdn.discordapp.com/embed/avatars/${id % 5}.png`;
 }
 
 const container = document.getElementById("staff-container");
@@ -27,7 +26,7 @@ staff.forEach(member => {
     card.className = "staff-card";
 
     card.innerHTML = `
-        <img src="${getAvatarURL(member.id)}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+        <img src="${discordDefaultAvatar(member.id)}">
         <h3>${member.name}</h3>
         <p>${member.role}</p>
     `;
