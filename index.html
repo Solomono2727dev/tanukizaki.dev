@@ -1,87 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanukizaki | VBL Community</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tanukizaki — VBL Community</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
-
 <body>
 
-    <!-- LOADING SCREEN -->
-    <div id="loader">
-        <div class="spinner"></div>
-        <p>Loading...</p>
-    </div>
+  <!-- LOADER -->
+  <div id="page-loader" class="loader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">Loading Tanukizaki...</div>
+  </div>
 
-    <!-- LIVE MEMBER COUNT WIDGET -->
-    <div id="memberWidget">Live Members: <span id="memberCount">Loading...</span></div>
+  <!-- MEMBER WIDGET (floating top-left) -->
+  <div id="memberWidget" class="member-widget">
+    <div class="member-title">Live Members</div>
+    <div id="memberCount" class="member-number">—</div>
+  </div>
 
-    <!-- NAVBAR -->
-    <nav>
-        <h1 class="logo">Tanukizaki</h1>
-
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav-left">
+        <div class="brand">Tanukizaki</div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#staff">Staff</a></li>
-            <li><a href="#join">Join Us</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#staff">Staff</a></li>
+          <li><a href="#join">Join</a></li>
         </ul>
+      </div>
 
-        <!-- LIGHT/DARK MODE SWITCH -->
+      <div class="nav-right">
+        <!-- theme toggle -->
         <label class="switch">
-            <input type="checkbox" id="themeToggle">
-            <span class="slider"></span>
+          <input id="themeToggle" type="checkbox" />
+          <span class="slider"></span>
         </label>
+      </div>
     </nav>
+  </header>
 
-    <!-- HERO SECTION -->
+  <!-- HERO -->
+  <main>
     <section id="home" class="hero reveal">
-        <h2 class="hero-title">Tanukizaki</h2>
+      <div class="hero-inner">
+        <h1 class="hero-title">Tanukizaki</h1>
         <p class="hero-sub">A modern VBL server + Community</p>
-        <a href="#join" class="btn">Join Us</a>
-    </section>
-
-    <!-- DESCRIPTION -->
-    <section id="desc" class="section reveal">
-        <h2>Why Join Us?</h2>
-        <p>
-            We are a growing VBL community, friendly, fun, and the most well operated server! 
-            Join us now!
-        </p>
-    </section>
-
-    <!-- ABOUT US -->
-    <section id="about" class="section reveal">
-        <h2>About Us</h2>
-        <p>
-            Our Founder, Meow, decided to start a VBL community, which will be friendly and fun to be in.
-            Since then we've been working hard day by day to improve our operations and make this 
-            a good experience for everyone!
-        </p>
-    </section>
-
-    <!-- STAFF SECTION -->
-    <section id="staff" class="section reveal">
-        <h2>Our Staff Team</h2>
-
-        <div class="staff-grid" id="staffGrid">
-            <!-- Staff boxes auto-filled by JS -->
+        <p class="hero-desc">We are a growing VBL community, friendly, fun, and the most well operated server! Join us now!</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#join">Join Us</a>
+          <a class="btn outline" href="#staff">Meet Staff</a>
         </div>
+      </div>
     </section>
 
-    <!-- JOIN US -->
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <h2>About Us</h2>
+      <p>Our Founder, Meow, decided to start a VBL community, which will be friendly and fun to be in. Since then we've been working hard day by day to improve our operations every day, and make this a good experience for everyone!</p>
+    </section>
+
+    <!-- STAFF -->
+    <section id="staff" class="section reveal">
+      <h2>Staff Team</h2>
+      <div id="staffGrid" class="staff-grid"></div>
+    </section>
+
+    <!-- JOIN -->
     <section id="join" class="section reveal">
-        <h2>Join Tanukizaki</h2>
-        <a class="btn" href="https://discord.gg/TVJdth4fsu" target="_blank">Join Our Discord</a>
+      <h2>Join Us</h2>
+      <p>Become part of our community — we host tryouts, scrims and events.</p>
+      <a class="btn primary" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Our Discord</a>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>Developed by: Solomon</p>
+    <!-- CREDITS / FOOTER -->
+    <footer class="site-footer">
+      <div>Developed by: Solomon</div>
+      <div class="footer-small">© Tanukizaki</div>
     </footer>
+  </main>
 
 </body>
 </html>
