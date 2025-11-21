@@ -162,3 +162,15 @@ footer {
 .light-mode footer {
     color: #222;
 }
+
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: white;
+}
+
+.light-mode .theme-btn {
+    color: #111;
+}
