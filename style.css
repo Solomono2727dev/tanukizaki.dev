@@ -7,8 +7,21 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.35s ease;
+}
+
+:root {
+    --bg: #0f0f0f;
+    --text: #ffffff;
+    --card: #1a1a1a;
+}
+
+.light {
+    --bg: #f5f5f5;
+    --text: #111;
+    --card: #ffffff;
 }
 
 /* NAVBAR */
@@ -16,47 +29,54 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(20,20,20,0.85);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: var(--card);
     padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(8px);
     z-index: 1000;
 }
 
 nav ul {
     display: flex;
     gap: 25px;
+    align-items: center;
 }
 
 nav a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
     font-size: 17px;
 }
 
-nav a:hover {
-    opacity: 0.7;
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--text);
 }
 
-.logo {
-    font-size: 23px;
-}
-
-/* HERO SECTION */
+/* HERO */
 #hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     text-align: center;
     padding: 0 20px;
 }
 
+.hero-img {
+    width: 60%;
+    max-width: 550px;
+    border-radius: 14px;
+    margin: 0 auto 30px auto;
+}
+
 .title {
-    font-size: 3.5rem;
+    font-size: 3.6rem;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -64,7 +84,24 @@ nav a:hover {
 .subtitle {
     font-size: 1.3rem;
     opacity: 0.85;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+}
+
+/* MEMBER BOX */
+.member-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.server-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
 }
 
 .btn {
@@ -76,10 +113,6 @@ nav a:hover {
     font-size: 18px;
 }
 
-.hero-btn {
-    font-size: 20px;
-}
-
 /* SECTIONS */
 .section {
     padding: 120px 40px;
@@ -88,30 +121,29 @@ nav a:hover {
 
 .section h2 {
     font-size: 2.4rem;
-    margin-bottom: 25px;
+    margin-bottom: 18px;
 }
 
 .section p {
     max-width: 800px;
     margin: auto;
     font-size: 1.1rem;
-    opacity: 0.9;
 }
 
 /* STAFF GRID */
 .staff-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 28px;
+    gap: 30px;
     padding-top: 30px;
 }
 
 .staff-card {
-    background: #1a1a1a;
-    padding: 22px;
+    background: var(--card);
+    padding: 20px;
     border-radius: 12px;
+    transition: 0.4s;
     text-align: center;
-    transition: 0.3s ease;
 }
 
 .staff-card:hover {
@@ -122,13 +154,8 @@ nav a:hover {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    margin-bottom: 15px;
     object-fit: cover;
-}
-
-/* JOIN FIX */
-#join p {
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 
 /* FOOTER */
@@ -136,47 +163,20 @@ footer {
     padding: 25px;
     text-align: center;
     opacity: 0.7;
-    font-size: 15px;
-    margin-top: 40px;
 }
 
-/* ========== LIGHT MODE STYLING ========== */
-.light-mode {
-    background: #f5f5f5;
-    color: #111;
+/* REVEAL ANIMATION */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.7s ease-out;
 }
 
-.light-mode nav {
-    background: rgba(255,255,255,0.9);
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.light-mode a {
-    color: #111;
-}
-
-.light-mode .staff-card {
-    background: #ffffff;
-    color: #111;
-}
-
-.light-mode footer {
-    color: #222;
-}
-
-.theme-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: white;
-}
-.member-display {
-    margin-left: 15px;
-    font-size: 16px;
-    opacity: 0.8;
-}
-
-.light-mode .theme-btn {
-    color: #111;
-}
-
+.delay { transition-delay: 0.15s; }
+.delay2 { transition-delay: 0.3s; }
+.delay3 { transition-delay: 0.45s; }
