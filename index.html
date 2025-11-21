@@ -5,36 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tanukizaki</title>
 <link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
 <nav class="navbar">
-<h1 class="logo">Tanukizaki</h1>
-<ul>
+<div class="logo">Tanukizaki</div>
+<ul class="nav-links">
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
-<li><a href="#credits">Credits</a></li>
-<li><button id="themeToggle">🌙</button></li>
+<li><a href="#staff">Staff</a></li>
+<li><a href="#updates">Updates</a></li>
+<li><button id="themeToggle" class="theme-btn">🌙</button></li>
 </ul>
 </nav>
 </header>
 
 
+<!-- HERO -->
 <section id="home" class="hero">
-<h2>Tanukizaki</h2>
-<p>A modern VBL server + Community</p>
-<p class="sub">We are a growing VBL community, friendly, fun, and the most well operated server! Join us now!</p>
-<a href="https://discord.gg/TVJdth4fsu" class="join-btn">Join Us</a>
+<div class="hero-content" data-fade>
+<h1>Tanukizaki</h1>
+<p class="tag">A modern VBL server + Community</p>
+<p class="desc">We are a growing VBL community — friendly, fun, and the most well-operated server! Join us now!</p>
+<a class="join-btn" href="https://discord.gg/TVJdth4fsu">Join Us</a>
 
 
-<div class="member-box">
-<img src="https://cdn.discordapp.com/icons/1334165564454994031/a_866f5d06ccaaa7f57f616be95b11f740.gif?size=2048" class="server-icon" />
-<p id="memberCount">Loading members...</p>
+<div class="member-box" data-fade>
+<p id="memberCount">Loading member count...</p>
 </div>
+</div>
+<img src="https://tr.rbxcdn.com/ea512cf44b4db6edbb8cb76f81857232/768/432/Image/Png" class="hero-img" />
 </section>
 
 
-<section id="about" class="about">
+<!-- ABOUT -->
+<section id="about" class="about" data-fade>
 <h2>About Us</h2>
 <p>
 Our Founder, Meow, decided to start a VBL community, which will be friendly and fun to be in.
@@ -44,12 +52,18 @@ experience for everyone..!
 </section>
 
 
-<section id="credits" class="credits">
-<h2>Credits</h2>
-<p>Developed by: Solomon</p>
+<!-- STAFF -->
+<section id="staff" class="staff" data-fade>
+<h2>Staff Team</h2>
+<div id="staffGrid" class="staff-grid"></div>
 </section>
 
 
-<script src="script.js"></script>
-</body>
+<!-- UPDATES -->
+<section id="updates" class="updates" data-fade>
+<h2>Updates</h2>
+<p>Coming soon...</p>
+</section>
+
+
 </html>
