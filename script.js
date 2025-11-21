@@ -55,3 +55,16 @@ themeToggle.addEventListener("click", () => {
         localStorage.setItem("theme", "dark");
     }
 });
+
+async function loadMembers() {
+    try {
+        const res = await fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true");
+        const data = await res.json();
+        document.getElementById("member-count").textContent = `${data.approximate_member_count} Members`;
+    } catch (e) {
+        document.getElementById("member-count").textContent = "N/A";
+    }
+}
+
+loadMembers();
+setInterval(loadMembers, 30000);
