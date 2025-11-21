@@ -1,73 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanukizaki</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <!-- NAVBAR -->
     <nav id="navbar">
         <h2 class="logo">Tanukizaki</h2>
         <ul>
-            <span id="member-count" class="member-display">Loading...</span>
-
             <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#staff">Staff</a></li>
-            <li><a href="#updates">Updates</a></li>
             <li><a href="#join">Join Us</a></li>
+            <li><button id="themeToggle" class="theme-btn">🌙</button></li>
         </ul>
-        <button id="theme-toggle" class="theme-btn">🌙</button>
-
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section id="hero">
-        <h1 class="title">Tanukizaki</h1>
-        <p class="subtitle">A modern VBL server + Community</p>
-        <a href="#join" class="btn hero-btn">Join Now</a>
+        <img src="https://tr.rbxcdn.com/ccf17e7d98d19ce2cdade517693c54b4/768/432/Image/Png"
+             class="hero-img" draggable="false">
+
+        <h1 class="title reveal">Tanukizaki</h1>
+        <p class="subtitle reveal delay">A modern VBL server + community</p>
+
+        <div class="member-box reveal delay2">
+            <img src="https://cdn.discordapp.com/icons/1334165564454994031/a_866f5d06ccaaa7f57f616be95b11f740.gif"
+                 class="server-icon">
+            <p id="memberCount">Loading members...</p>
+        </div>
+
+        <a href="#join" class="btn hero-btn reveal delay3">Join Now</a>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section">
+    <section id="about" class="section reveal">
         <h2>About Us</h2>
         <p>
-            We are a growing VBL community — friendly, fun, and the most well-operated server!  
-            Our Founder, Meow, started Tanukizaki with the mission to create a positive, enjoyable VBL space.
-            Since then, we have worked every day to improve our operations and deliver the best experience possible
-            to all our members.
+            We are a growing VBL community — friendly, fun, and the most well-operated server!
+            Our Founder, Meow, created Tanukizaki to build a positive, enjoyable, competitive VBL community.
         </p>
     </section>
 
-    <!-- STAFF TEAM -->
-    <section id="staff" class="section">
+    <!-- STAFF -->
+    <section id="staff" class="section reveal">
         <h2>Staff Team</h2>
         <div id="staff-container" class="staff-grid"></div>
     </section>
 
-    <!-- UPDATES -->
-    <section id="updates" class="section">
-        <h2>Latest Updates</h2>
-        <p>Updates will appear here soon!</p>
-    </section>
-
-    <!-- JOIN US -->
-    <section id="join" class="section">
+    <!-- JOIN -->
+    <section id="join" class="section reveal">
         <h2>Join Us</h2>
-        <p>Become part of the fastest-growing VBL community!</p>
-        <a class="btn join-btn" href="https://discord.gg/TVJdth4fsu" target="_blank">Join Discord</a>
+        <p>Become part of the fastest-growing VBL community.</p>
+        <a href="https://discord.gg/TVJdth4fsu" target="_blank" class="btn join-btn">Join Discord</a>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>Developed by: Solomon</p>
+        <p>Developed by Solomon</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
