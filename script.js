@@ -1,29 +1,19 @@
-// Light / Dark Mode
-const themeToggle = document.getElementById("themeToggle");
-const body = document.body;
-
-
+// DARK MODE
+const toggle = document.getElementById("themeToggle");
 if (localStorage.getItem("theme") === "dark") {
-body.classList.add("dark");
-themeToggle.textContent = "☀️";
+document.body.classList.add("dark");
+toggle.textContent = "☀️";
 }
-
-
-themeToggle.addEventListener("click", () => {
-body.classList.toggle("dark");
-const isDark = body.classList.contains("dark");
-themeToggle.textContent = isDark ? "☀️" : "🌙";
+toggle.onclick = () => {
+document.body.classList.toggle("dark");
+const isDark = document.body.classList.contains("dark");
+toggle.textContent = isDark ? "☀️" : "🌙";
 localStorage.setItem("theme", isDark ? "dark" : "light");
-});
+};
 
 
-// Fetch Discord Member Count
+// DISCORD MEMBER COUNT
 fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true")
-.then(res => res.json())
-.then(data => {
-document.getElementById("memberCount").textContent = `${data.approximate_member_count} Members`;
-})
-.catch(() => {
-document.getElementById("memberCount").textContent = "Unable to load";
-});
-
+.then(r => r.json())
+.then(d => {
+document.getElementById("memberCount").textContent = `${d.approximate_member
