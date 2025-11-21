@@ -139,3 +139,26 @@ footer {
     font-size: 15px;
     margin-top: 40px;
 }
+
+/* ========== LIGHT MODE STYLING ========== */
+.light-mode {
+    background: #f5f5f5;
+    color: #111;
+}
+
+.light-mode nav {
+    background: rgba(255,255,255,0.9);
+}
+
+.light-mode a {
+    color: #111;
+}
+
+.light-mode .staff-card {
+    background: #ffffff;
+    color: #111;
+}
+
+.light-mode footer {
+    color: #222;
+}
