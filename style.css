@@ -1,130 +1,110 @@
-/* --------------------
-   GENERAL PAGE STYLE
------------------------*/
-
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: "Poppins", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: all 0.3s ease;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-:root {
-    --bg: #ffffff;
-    --text: #000000;
-    --card: #f4f4f4;
+body {
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
 }
 
-.dark-mode {
-    --bg: #121212;
-    --text: #ffffff;
-    --card: #1f1f1f;
-}
-
-/* --------------------
-      NAVBAR
------------------------*/
-
-#navbar {
-    width: 100%;
+/* NAVBAR */
+nav {
     position: fixed;
     top: 0;
-    background: var(--card);
+    width: 100%;
+    background: rgba(20,20,20,0.8);
+    backdrop-filter: blur(8px);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 15px 40px;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
     z-index: 1000;
 }
 
-#navbar ul {
+nav ul {
     display: flex;
-    gap: 20px;
-    list-style: none;
+    gap: 25px;
 }
 
-#navbar a {
-    color: var(--text);
+nav a {
+    color: white;
     text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
+    font-size: 17px;
 }
 
-#navbar a:hover {
-    opacity: 0.6;
+nav a:hover {
+    opacity: 0.7;
 }
 
-/* --------------------
-      HERO SECTION
------------------------*/
+.logo {
+    font-size: 22px;
+}
 
+/* HERO SECTION */
 #hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, #4e5bff, #8f00ff);
+    padding: 0 20px;
+}
+
+.title {
+    font-size: 3.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: #5865f2;
+    border-radius: 6px;
     color: white;
-    padding: 20px;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 .hero-btn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: white;
-    color: black;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
+    font-size: 20px;
 }
 
-.hero-btn:hover {
-    opacity: 0.7;
-}
-
-/* --------------------
-      SECTIONS
------------------------*/
-
-section {
-    padding: 80px 50px;
+/* SECTIONS */
+.section {
+    padding: 100px 40px;
     text-align: center;
 }
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.7s ease-out;
+.section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 25px;
 }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --------------------
-      STAFF CARDS
------------------------*/
-
+/* STAFF GRID */
 .staff-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    padding-top: 30px;
 }
 
 .staff-card {
-    background: var(--card);
+    background: #1a1a1a;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 30px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s ease;
 }
 
 .staff-card:hover {
@@ -132,31 +112,8 @@ section {
 }
 
 .staff-card img {
-    width: 120px;
-    height: 120px;
-    border-radius: 100%;
-    object-fit: cover;
-    border: 5px solid #4e5bff;
-}
-
-.staff-card h3 {
-    margin: 15px 0 5px;
-}
-
-.staff-card p {
-    opacity: 0.8;
-}
-
-/* Light/Dark switch */
-#theme-toggle {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    padding: 12px;
-    background: var(--card);
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    z-index: 1000;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
