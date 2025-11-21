@@ -25,6 +25,29 @@ nav {
     z-index: 1000;
 }
 
+/* THEME TOGGLE BUTTON */
+#theme-toggle {
+    background: transparent;
+    border: 2px solid #fff;
+    color: white;
+    font-size: 20px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#theme-toggle:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.light-mode #theme-toggle {
+    border-color: #000;
+    color: black;
+}
+
+
+
 nav ul {
     display: flex;
     gap: 25px;
@@ -139,3 +162,4 @@ footer {
     font-size: 15px;
     margin-top: 40px;
 }
+
