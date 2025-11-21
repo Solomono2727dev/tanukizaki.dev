@@ -33,3 +33,25 @@ staff.forEach(member => {
 
     container.appendChild(card);
 });
+
+// =============== LIGHT / DARK MODE ===============
+const themeToggle = document.getElementById("theme-toggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.textContent = "☀️";
+}
+
+// Toggle theme on click
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "light");
+    } else {
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "dark");
+    }
+});
