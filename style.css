@@ -1,3 +1,4 @@
+/* ========== GENERAL ========== */
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +8,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #0d0d0d;
+    background: linear-gradient(-45deg, #1b1b1b, #0d0d0d, #1b1b1b, #0d0d0d);
+    background-size: 400% 400%;
     color: #fff;
+    animation: gradientBG 15s ease infinite;
     transition: 0.3s;
 }
 
-/* FAKE LOADING SCREEN */
+/* ========== FAKE LOADING SCREEN ========== */
 .page-loader {
     position: fixed;
     width: 100%;
@@ -23,44 +26,42 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 2000;
-    pointer-events: none; /* allow clicks to pass through */
 }
 
 .loader-bar-container {
-    width: 70%;
-    height: 8px;
+    width: 60%;
+    height: 10px;
     background: rgba(255,255,255,0.1);
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .loader-bar {
     width: 0%;
     height: 100%;
     background: linear-gradient(90deg, #7b2cff, #26d0ce);
-    transition: width 0.2s;
 }
 
 .loader-text {
-    margin-top: 8px;
-    font-size: 16px;
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 
-/* MEMBER WIDGET */
+/* ========== MEMBER WIDGET ========== */
 #member-widget {
     position: fixed;
-    top: 20px;
+    top: 80px;
     left: 20px;
     background: rgba(0,0,0,0.6);
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 8px;
-    z-index: 1500;
+    padding: 10px 15px;
+    border-radius: 12px;
     font-weight: bold;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    z-index: 1500;
 }
 
-/* NAVBAR */
+/* ========== NAVBAR ========== */
 nav {
     position: fixed;
     top: 0;
@@ -68,8 +69,8 @@ nav {
     background: rgba(20,20,20,0.85);
     backdrop-filter: blur(8px);
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 40px;
     z-index: 1000;
 }
@@ -77,14 +78,13 @@ nav {
 nav ul {
     display: flex;
     gap: 20px;
-    align-items: center;
     list-style: none;
+    align-items: center;
 }
 
 nav a, #theme-toggle {
     color: white;
     text-decoration: none;
-    font-size: 16px;
     cursor: pointer;
     background: none;
     border: none;
@@ -96,10 +96,9 @@ nav a, #theme-toggle {
 
 .logo {
     font-size: 23px;
-    font-weight: bold;
 }
 
-/* SECTIONS */
+/* ========== SECTIONS ========== */
 .section {
     padding: 120px 40px;
     text-align: center;
@@ -117,7 +116,6 @@ nav a, #theme-toggle {
     max-width: 800px;
     margin: auto;
     font-size: 1.1rem;
-    opacity: 0.9;
 }
 
 /* HERO */
@@ -134,7 +132,6 @@ nav a, #theme-toggle {
 .title {
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 10px;
     opacity: 0;
 }
 
@@ -147,13 +144,6 @@ nav a, #theme-toggle {
     margin-top: 20px;
 }
 
-/* JOIN BUTTON FIX */
-#join .join-btn {
-    display: inline-block;
-    margin-top: 25px;
-    margin-bottom: 60px;
-}
-
 /* STAFF GRID */
 .staff-grid {
     display: grid;
@@ -163,7 +153,7 @@ nav a, #theme-toggle {
 }
 
 .staff-card {
-    background: #1a1a1a;
+    background: rgba(30,30,30,0.8);
     padding: 22px;
     border-radius: 12px;
     text-align: center;
@@ -184,7 +174,7 @@ nav a, #theme-toggle {
 
 /* LIGHT MODE */
 .light-mode {
-    background: #f5f5f5;
+    background: linear-gradient(-45deg, #f5f5f5, #e0e0e0, #f5f5f5, #e0e0e0);
     color: #111;
 }
 
@@ -197,10 +187,17 @@ nav a, #theme-toggle {
 }
 
 .light-mode .staff-card {
-    background: #ffffff;
+    background: #fff;
     color: #111;
 }
 
 .light-mode footer {
     color: #222;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes gradientBG {
+    0% {background-position:0% 50%}
+    50% {background-position:100% 50%}
+    100% {background-position:0% 50%}
 }
