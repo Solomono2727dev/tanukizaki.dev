@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tanukizaki</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<!-- FAKE LOADING SCREEN -->
-<div id="page-loader" class="page-loader">
-    <div class="loader-bar-container">
-        <div id="loader-bar" class="loader-bar"></div>
+<!-- Loading Screen -->
+<div id="loader">
+    <div class="loader-content">
+        <p id="loadingText">Loading</p>
+        <div class="loader-bar">
+            <div id="loaderProgress"></div>
+        </div>
     </div>
-    <div class="loader-text" id="loader-text">Loading</div>
 </div>
 
-<!-- PARTICLES BACKGROUND -->
-<canvas id="particle-canvas"></canvas>
-
-<!-- MEMBER WIDGET -->
-<div id="member-widget">
-    Live Members: <span id="member-count">0</span>
+<!-- Member Widget -->
+<div id="memberWidget">
+    <p>Live Members: <span id="liveMembers">404</span></p>
 </div>
 
 <!-- NAVBAR -->
@@ -33,49 +31,48 @@
         <li><a href="#staff">Staff</a></li>
         <li><a href="#updates">Updates</a></li>
         <li><a href="#join">Join Us</a></li>
-        <li><button id="theme-toggle">🌙</button></li>
+        <li><button id="themeToggle">🌙</button></li>
     </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero" class="section reveal">
+<!-- HERO SECTION -->
+<section id="hero" class="section hidden">
     <h1 class="title">Tanukizaki</h1>
     <p class="subtitle">A modern VBL server + Community</p>
-    <p class="sub-text">We are a growing VBL community — friendly, fun, and well-operated. Join us now!</p>
-    <a href="#join" class="btn hero-btn">Join Now</a>
+    <p class="subtext">We are a growing VBL community — friendly, fun, and well-operated. Join us now!</p>
+    <a href="https://discord.gg/TVJdth4fsu" class="btn join-btn">Join Us!</a>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section reveal">
+<section id="about" class="section hidden">
     <h2>About Us</h2>
     <p>
-        Our Founder, Meow, decided to start a VBL community, which is friendly and fun.
-        Since then, we’ve been working hard every day to improve operations and provide
-        a great experience for everyone.
+        Our Founder, Meow, started Tanukizaki with the mission to create a positive, enjoyable VBL space. 
+        Since then, we have worked hard every day to improve operations and give all members the best experience!
     </p>
 </section>
 
-<!-- STAFF -->
-<section id="staff" class="section reveal">
+<!-- STAFF TEAM -->
+<section id="staff" class="section hidden">
     <h2>Staff Team</h2>
     <div id="staff-container" class="staff-grid"></div>
 </section>
 
 <!-- UPDATES -->
-<section id="updates" class="section reveal">
+<section id="updates" class="section hidden">
     <h2>Latest Updates</h2>
     <p>Updates will appear here soon!</p>
 </section>
 
-<!-- JOIN -->
-<section id="join" class="section reveal">
+<!-- JOIN US -->
+<section id="join" class="section hidden">
     <h2>Join Us</h2>
-    <p>Become part of our fastest-growing VBL community!</p>
-    <a class="btn join-btn" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Discord</a>
+    <p>Become part of the fastest-growing VBL community!</p>
+    <a class="btn join-btn" href="https://discord.gg/TVJdth4fsu" target="_blank">Join Discord</a>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="hidden">
     <p>Developed by: Solomon</p>
 </footer>
 
