@@ -12,7 +12,7 @@ body {
     transition: 0.3s;
 }
 
-/* LOADER */
+/* FAKE LOADING SCREEN */
 .page-loader {
     position: fixed;
     width: 100%;
@@ -23,6 +23,7 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 2000;
+    pointer-events: none; /* allow clicks to pass through */
 }
 
 .loader-bar-container {
@@ -102,6 +103,9 @@ nav a, #theme-toggle {
 .section {
     padding: 120px 40px;
     text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
 }
 
 .section h2 {
