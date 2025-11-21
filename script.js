@@ -26,3 +26,4 @@ document.getElementById("memberCount").textContent = `${data.approximate_member_
 .catch(() => {
 document.getElementById("memberCount").textContent = "Unable to load";
 });
+
