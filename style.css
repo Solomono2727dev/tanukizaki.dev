@@ -1,0 +1,162 @@
+/* --------------------
+   GENERAL PAGE STYLE
+-----------------------*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --card: #f4f4f4;
+}
+
+.dark-mode {
+    --bg: #121212;
+    --text: #ffffff;
+    --card: #1f1f1f;
+}
+
+/* --------------------
+      NAVBAR
+-----------------------*/
+
+#navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: var(--card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+#navbar ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+#navbar a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#navbar a:hover {
+    opacity: 0.6;
+}
+
+/* --------------------
+      HERO SECTION
+-----------------------*/
+
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #4e5bff, #8f00ff);
+    color: white;
+    padding: 20px;
+}
+
+.hero-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    opacity: 0.7;
+}
+
+/* --------------------
+      SECTIONS
+-----------------------*/
+
+section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------
+      STAFF CARDS
+-----------------------*/
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.staff-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 30px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+}
+
+.staff-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 5px solid #4e5bff;
+}
+
+.staff-card h3 {
+    margin: 15px 0 5px;
+}
+
+.staff-card p {
+    opacity: 0.8;
+}
+
+/* Light/Dark switch */
+#theme-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 12px;
+    background: var(--card);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1000;
+}
