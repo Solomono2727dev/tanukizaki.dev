@@ -1,3 +1,4 @@
+/* ===================== STAFF LIST ===================== */
 const staff = [
     { role: "Founder", name: "Meow", id: "1275059869799415819" },
     { role: "Co Owner", name: "Lisa", id: "1000315559868645427" },
@@ -15,56 +16,64 @@ const staff = [
     { role: "Moderator", name: "Shivam", id: "748050700092571659" }
 ];
 
-function discordDefaultAvatar(id) {
+function getDefaultAvatar(id) {
     return `https://cdn.discordapp.com/embed/avatars/${id % 5}.png`;
 }
 
 const container = document.getElementById("staff-container");
-
 staff.forEach(member => {
     const card = document.createElement("div");
     card.className = "staff-card";
-
     card.innerHTML = `
-        <img src="${discordDefaultAvatar(member.id)}">
+        <img src="${getDefaultAvatar(member.id)}">
         <h3>${member.name}</h3>
         <p>${member.role}</p>
     `;
-
     container.appendChild(card);
 });
 
-// =============== LIGHT / DARK MODE ===============
-const themeToggle = document.getElementById("theme-toggle");
 
-// Load saved theme
+/* ===================== LIGHT / DARK MODE ===================== */
+const themeToggle = document.getElementById("themeToggle");
+
 if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light-mode");
+    document.body.classList.add("light");
     themeToggle.textContent = "☀️";
 }
 
-// Toggle theme on click
 themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
+    document.body.classList.toggle("light");
 
-    if (document.body.classList.contains("light-mode")) {
-        themeToggle.textContent = "☀️";
-        localStorage.setItem("theme", "light");
-    } else {
-        themeToggle.textContent = "🌙";
-        localStorage.setItem("theme", "dark");
-    }
+    const light = document.body.classList.contains("light");
+    themeToggle.textContent = light ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", light ? "light" : "dark");
 });
 
-async function loadMembers() {
-    try {
-        const res = await fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true");
-        const data = await res.json();
-        document.getElementById("member-count").textContent = `${data.approximate_member_count} Members`;
-    } catch (e) {
-        document.getElementById("member-count").textContent = "N/A";
-    }
+
+/* ===================== DISCORD MEMBER COUNT ===================== */
+fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true")
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("memberCount").textContent =
+            `${data.approximate_member_count} Members`;
+    })
+    .catch(() => {
+        document.getElementById("memberCount").textContent = "Unable to load";
+    });
+
+
+/* ===================== SCROLL REVEAL ===================== */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+            el.classList.add("visible");
+        }
+    });
 }
 
-loadMembers();
-setInterval(loadMembers, 30000);
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
