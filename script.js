@@ -1,79 +1,60 @@
-/* ===================== STAFF LIST ===================== */
+// LOADING SCREEN
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loader").style.opacity = "0";
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+        }, 500);
+    }, 800);
+});
+
+// LIGHT/DARK MODE
+document.getElementById("themeToggle").addEventListener("change", function () {
+    document.body.classList.toggle("light");
+});
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll(".reveal");
+function revealElements() {
+    for (let el of reveals) {
+        let rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) el.classList.add("visible");
+    }
+}
+window.addEventListener("scroll", revealElements);
+revealElements();
+
+// LIVE MEMBER COUNT (DISCORD API)
+async function loadMembers() {
+    try {
+        const res = await fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true");
+        const data = await res.json();
+        document.getElementById("memberCount").innerText = data.approximate_member_count;
+    } catch {
+        document.getElementById("memberCount").innerText = "Error";
+    }
+}
+loadMembers();
+setInterval(loadMembers, 30000);
+
+// STAFF LIST (PFPS AUTO-LOAD)
 const staff = [
-    { role: "Founder", name: "Meow", id: "1275059869799415819" },
-    { role: "Co Owner", name: "Lisa", id: "1000315559868645427" },
-    { role: "Co Owner", name: "SleePy", id: "889306635456106506" },
-    { role: "General Manager", name: "Seahl", id: "925634940408856686" },
-    { role: "Administrator", name: "Jake", id: "1308500243448336478" },
-    { role: "Administrator", name: "Piorun", id: "1356076318319575190" },
-    { role: "Administrator", name: "Zal", id: "747060313597411380" },
-    { role: "Administrator", name: "Azy", id: "907189767731568660" },
-    { role: "Community Manager", name: "Dogo", id: "1335596631374041181" },
-    { role: "Moderator", name: "Abyss", id: "1046159416082305115" },
-    { role: "Moderator", name: "Fish", id: "1082216499445518397" },
-    { role: "Moderator", name: "Qin", id: "957506592784388096" },
-    { role: "Moderator", name: "Elan", id: "950386138651189258" },
-    { role: "Moderator", name: "Shivam", id: "748050700092571659" }
+    { id: "1413961391211024457", name: "Meow", role: "Founder" },
+    { id: "000000000000000000", name: "Staff 2", role: "Admin" },
+    { id: "000000000000000000", name: "Staff 3", role: "Mod" }
 ];
 
-function getDefaultAvatar(id) {
-    return `https://cdn.discordapp.com/embed/avatars/${id % 5}.png`;
-}
+staff.forEach(user => {
+    const grid = document.getElementById("staffGrid");
 
-const container = document.getElementById("staff-container");
-staff.forEach(member => {
-    const card = document.createElement("div");
-    card.className = "staff-card";
-    card.innerHTML = `
-        <img src="${getDefaultAvatar(member.id)}">
-        <h3>${member.name}</h3>
-        <p>${member.role}</p>
+    const box = document.createElement("div");
+    box.className = "staff-box";
+
+    box.innerHTML = `
+        <h3>${user.name}</h3>
+        <p>${user.role}</p>
+        <small>ID: ${user.id}</small>
     `;
-    container.appendChild(card);
+
+    grid.appendChild(box);
 });
-
-
-/* ===================== LIGHT / DARK MODE ===================== */
-const themeToggle = document.getElementById("themeToggle");
-
-if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light");
-    themeToggle.textContent = "☀️";
-}
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light");
-
-    const light = document.body.classList.contains("light");
-    themeToggle.textContent = light ? "☀️" : "🌙";
-
-    localStorage.setItem("theme", light ? "light" : "dark");
-});
-
-
-/* ===================== DISCORD MEMBER COUNT ===================== */
-fetch("https://discord.com/api/v9/invites/TVJdth4fsu?with_counts=true")
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById("memberCount").textContent =
-            `${data.approximate_member_count} Members`;
-    })
-    .catch(() => {
-        document.getElementById("memberCount").textContent = "Unable to load";
-    });
-
-
-/* ===================== SCROLL REVEAL ===================== */
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
-    reveals.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-            el.classList.add("visible");
-        }
-    });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
