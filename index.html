@@ -8,17 +8,20 @@
 </head>
 <body>
 
+<!-- Animated Gradient Background -->
+<canvas id="bgCanvas"></canvas>
+
 <!-- Loading Screen -->
 <div id="loader">
-  <div class="loader-content">
-    <p id="loadingText">Loading...</p>
-    <div class="loader-bar"><div id="loaderProgress"></div></div>
+  <div class="loader-bar-container">
+    <div id="loaderProgress"></div>
+    <span id="loadingText">Loading...</span>
   </div>
 </div>
 
 <!-- Live Members Widget -->
-<div id="memberWidget">
-  <p>Live Members: <span id="liveMembers">404</span></p>
+<div id="memberWidget" title="Live Members">
+  <p>Live Members: <span id="liveMembers">0</span></p>
 </div>
 
 <!-- Navbar -->
