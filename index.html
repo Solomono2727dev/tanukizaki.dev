@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tanukizaki</title>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tanukizaki</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- LOADING SCREEN -->
-    <div id="loader">
-        <div class="spinner"></div>
-        <p>Loading...</p>
+<!-- LOADING SCREEN -->
+<div id="page-loader" class="page-loader">
+    <div class="loader-bar-container">
+        <div id="loader-bar" class="loader-bar"></div>
     </div>
+    <div class="loader-text">Loading Tanukizaki...</div>
+</div>
 
-    <!-- MEMBER FLOATING WIDGET -->
-    <div class="member-widget">
-        <strong>Live Members:</strong>
-        <p id="memberCount">...</p>
-    </div>
+<!-- MEMBER WIDGET -->
+<div id="member-widget">
+    Live Members: <span id="member-count">0</span>
+</div>
 
-    <!-- NAVBAR -->
-    <nav id="navbar">
-        <h2 class="logo">Tanukizaki</h2>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#staff">Staff</a></li>
-            <li><a href="#updates">Updates</a></li>
-            <li><a href="#join">Join Us</a></li>
-        </ul>
+<!-- NAVBAR -->
+<nav id="navbar">
+    <h2 class="logo">Tanukizaki</h2>
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#updates">Updates</a></li>
+        <li><a href="#join">Join Us</a></li>
+        <li><button id="theme-toggle">🌙</button></li>
+    </ul>
+</nav>
 
-        <button id="theme-toggle">🌙</button>
-    </nav>
+<!-- HERO -->
+<section id="hero" class="section reveal">
+    <h1 class="title">Tanukizaki</h1>
+    <p class="subtitle">A modern VBL server + Community</p>
+    <p class="sub-text">We are a growing VBL community — friendly, fun, and well-operated. Join us now!</p>
+    <a href="#join" class="btn hero-btn">Join Now</a>
+</section>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="reveal">
-        <h1 class="title">Tanukizaki</h1>
-        <p class="subtitle">A modern VBL server + Community</p>
-        <a href="#join" class="btn hero-btn">Join Now</a>
-    </section>
+<!-- ABOUT -->
+<section id="about" class="section reveal">
+    <h2>About Us</h2>
+    <p>
+        Our Founder, Meow, decided to start a VBL community, which is friendly and fun.
+        Since then, we’ve been working hard every day to improve operations and provide a
+        great experience for everyone.
+    </p>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section reveal">
-        <h2>About Us</h2>
-        <p>
-            We are a growing VBL community — friendly, fun, and the most well-operated server!  
-            Our Founder, Meow, started Tanukizaki with the mission to create a positive, enjoyable VBL space.
-            Since then, we have worked every day to improve our operations and deliver the best experience 
-            possible to all our members.
-        </p>
-    </section>
+<!-- STAFF -->
+<section id="staff" class="section reveal">
+    <h2>Staff Team</h2>
+    <div id="staff-container" class="staff-grid"></div>
+</section>
 
-    <!-- STAFF TEAM -->
-    <section id="staff" class="section reveal">
-        <h2>Staff Team</h2>
-        <div id="staff-container" class="staff-grid"></div>
-    </section>
+<!-- UPDATES -->
+<section id="updates" class="section reveal">
+    <h2>Latest Updates</h2>
+    <p>Updates will appear here soon!</p>
+</section>
 
-    <!-- UPDATES -->
-    <section id="updates" class="section reveal">
-        <h2>Latest Updates</h2>
-        <p>Updates will appear here soon!</p>
-    </section>
+<!-- JOIN -->
+<section id="join" class="section reveal">
+    <h2>Join Us</h2>
+    <p>Become part of our fastest-growing VBL community!</p>
+    <a class="btn join-btn" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Discord</a>
+</section>
 
-    <!-- JOIN US -->
-    <section id="join" class="section reveal">
-        <h2>Join Us</h2>
-        <p>Become part of the fastest-growing VBL community!</p>
-        <a class="btn join-btn" href="https://discord.gg/TVJdth4fsu" target="_blank">Join Discord</a>
-    </section>
+<!-- FOOTER -->
+<footer>
+    <p>Developed by: Solomon</p>
+</footer>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>Developed by: Solomon</p>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
