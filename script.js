@@ -354,10 +354,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 // Edit these with your official results
 const scrims = [
-  { opponent: "VBL LEGENDS", score: "5 - 2 Win", date: "Feb 2025" },
-  { opponent: "SKYZ SQUAD", score: "3 - 1 Win", date: "Jan 2025" },
-  { opponent: "Nova Volley", score: "4 - 4 Draw", date: "Dec 2024" },
-  { opponent: "Team Eclipse", score: "1 - 3 Loss", date: "Dec 2024" }
+  { opponent: "TMK", score: "23 - 25 Loss", date: "21 Feb 2025" },
+  
 ];
 
 const scrimGrid = document.getElementById("scrimGrid");
@@ -371,3 +369,4 @@ scrims.forEach(s => {
     </div>
   `;
 });
+
