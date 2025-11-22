@@ -312,3 +312,42 @@ footer{ padding:32px; text-align:center; color:var(--muted); }
   .hero-title{ font-size:36px; }
   nav{ padding:10px 18px; }
 }
+
+/* SCRIM RECORDS */
+.scrim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.scrim-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+.scrim-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px var(--shadow);
+}
+
+.scrim-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.scrim-score {
+  margin-top: 10px;
+  font-size: 17px;
+  opacity: 0.8;
+}
+
+.scrim-date {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.6;
+}
