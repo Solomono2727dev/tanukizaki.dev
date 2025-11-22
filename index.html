@@ -1,114 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanukizaki — VBL Community</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tanukizaki — VBL Community</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- 🔵 LOADING SCREEN -->
-<div id="loading-screen">
-    <div class="loading-text" id="loadingText">Loading...</div>
-    <div class="loading-bar">
-        <div class="loading-progress"></div>
+  <!-- PARTICLE CANVAS -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen" role="status" aria-live="polite">
+    <div id="loading-text">Loading</div>
+    <div id="loading-bar-container">
+      <div id="loading-bar"></div>
     </div>
-</div>
+  </div>
 
-<!-- 🔵 NAVBAR -->
-<nav>
-    <div class="logo">Tanukizaki</div>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#staff">Staff</a></li>
-        <li><a href="#join">Join Us</a></li>
-    </ul>
-    <button id="modeToggle">🌙</button>
-</nav>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-left">
+      <div class="logo">Tanukizaki</div>
+    </div>
+    <div class="nav-right">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#staff">Staff</a>
+      <a href="#updates">Updates</a>
+      <a href="#join">Join</a>
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
 
-<!-- 🔵 LIVE MEMBERS WIDGET -->
-<div id="liveWidget">
-    <strong>Live Members:</strong> <span id="memberCount">...</span>
-</div>
+  <!-- LIVE MEMBER WIDGET (top-left, under navbar) -->
+  <div id="liveWidget" role="status" aria-live="polite">
+    <span class="live-label">Live Members:</span>
+    <span id="liveCount">—</span>
+  </div>
 
-<!-- 🔵 RIGHT SIDE MINIMIZED TODO WIDGET BUTTON -->
-<div id="todoButton">📘</div>
+  <!-- RIGHT-SIDE TODO MINIMIZED BUTTON -->
+  <button id="todoToggle" aria-label="Open To-Do widget">📘</button>
 
-<!-- 🔵 TODO WIDGET FULL -->
-<div id="todoWidget">
-    <h2>To-Do List</h2>
+  <!-- RIGHT-SIDE TODO WIDGET (hidden by default) -->
+  <aside id="todoWidget" aria-hidden="true">
+    <h3>To Do List</h3>
 
-    <label>Username</label>
-    <input id="todoUsername" placeholder="Enter username">
+    <label for="todoUsername">Username (required)</label>
+    <input id="todoUsername" type="text" placeholder="Enter your username" />
 
-    <label>Submit Link</label>
-    <input id="todoLink" placeholder="Paste link">
+    <label for="todoLink">Link (required)</label>
+    <input id="todoLink" type="url" placeholder="https://..." />
 
-    <div class="todo-items">
-        <label><input type="checkbox" class="task"> 10x block sets</label>
-        <label><input type="checkbox" class="task"> Spike sets</label>
-        <label><input type="checkbox" class="task"> Delay sets</label>
-        <label><input type="checkbox" class="task"> Normal sets</label>
-        <label><input type="checkbox" class="task"> 20x desyncs</label>
-        <label><input type="checkbox" class="task"> 10x delay glides (in & out)</label>
-        <label><input type="checkbox" class="task"> Non-delay glides</label>
+    <div class="tasks">
+      <label><input type="checkbox" class="task" data-task="10x block sets"> 10x block sets</label>
+      <label><input type="checkbox" class="task" data-task="Spike sets"> Spike sets</label>
+      <label><input type="checkbox" class="task" data-task="Delay sets"> Delay sets</label>
+      <label><input type="checkbox" class="task" data-task="Normal sets"> Normal sets</label>
+      <label><input type="checkbox" class="task" data-task="20x desyncs"> 20x desyncs</label>
+      <label><input type="checkbox" class="task" data-task="10x delay glides"> 10x delay glides (in/out)</label>
+      <label><input type="checkbox" class="task" data-task="Non delay glides"> Non delay glides</label>
     </div>
 
     <button id="submitTodo" disabled>Submit</button>
-</div>
+    <div id="todoStatus" aria-live="polite"></div>
+  </aside>
 
-<!-- 🔵 PARTICLES BACKGROUND -->
-<div id="particles"></div>
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section reveal">
+      <h1 class="hero-title">Tanukizaki</h1>
+      <p class="hero-sub">A modern VBL server + Community</p>
+      <p class="hero-desc">We are a growing VBL community — friendly, fun, and well-operated. Join us now!</p>
+      <a class="btn" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Us</a>
+    </section>
 
-<!-- 🔵 HERO SECTION -->
-<section id="home" class="section">
-    <h1 class="hero-title animate">Tanukizaki</h1>
-    <p class="hero-sub animate">A modern VBL server + Community</p>
-</section>
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <h2>About Us</h2>
+      <p>
+        Our Founder, Meow, started Tanukizaki with the mission to create a friendly and well-run VBL community.
+        We improve operations daily and welcome all players.
+      </p>
+    </section>
 
-<!-- 🔵 ABOUT -->
-<section id="about" class="section">
-    <h2 class="animate">About Us</h2>
-    <p class="animate">
-        We are a growing VBL community — friendly, fun, and well-operated.
-        Join us now!
-    </p>
-</section>
+    <!-- STAFF -->
+    <section id="staff" class="section reveal">
+      <h2>Staff Team</h2>
+      <div id="staffContainer" class="staff-grid" aria-live="polite"></div>
+    </section>
 
-<!-- 🔵 STAFF -->
-<section id="staff" class="section">
-    <h2 class="animate">Staff Team</h2>
+    <!-- UPDATES -->
+    <section id="updates" class="section reveal">
+      <h2>Updates</h2>
+      <p>Latest updates will appear here.</p>
+    </section>
 
-    <div class="staff-grid">
-        <div class="staff-card animate">
-            <div class="pfp"></div>
-            <h3>Founder</h3>
-            <p>Meow</p>
-        </div>
+    <!-- JOIN -->
+    <section id="join" class="section reveal">
+      <h2>Join Us</h2>
+      <p>We are a gaming VBL community — friendly, fun, and the most well-operated server! Join us now!</p>
+      <a class="btn" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Discord</a>
+    </section>
+  </main>
 
-        <div class="staff-card animate">
-            <div class="pfp"></div>
-            <h3>Developer</h3>
-            <p>Solomon</p>
-        </div>
+  <footer>
+    <p>Developed by: Solomon</p>
+  </footer>
 
-        <div class="staff-card animate">
-            <div class="pfp"></div>
-            <h3>Moderator</h3>
-            <p>Staff Member</p>
-        </div>
-    </div>
-</section>
-
-<!-- 🔵 JOIN US -->
-<section id="join" class="section">
-    <h2 class="animate">Join Us</h2>
-    <p class="animate">We are a gaming VBL community.</p>
-    <a href="#" class="btn animate">Join Us</a>
-</section>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
