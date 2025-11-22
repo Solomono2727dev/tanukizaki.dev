@@ -347,3 +347,27 @@ document.addEventListener("DOMContentLoaded", ()=>{
   // keep previous behavior: run an initial reveal check in case some elements are in view
   // (the IntersectionObserver handles this automatically when observed)
 });
+
+/* =========================
+   SCRIM RECORDS
+   ========================= */
+
+// Edit these with your official results
+const scrims = [
+  { opponent: "VBL LEGENDS", score: "5 - 2 Win", date: "Feb 2025" },
+  { opponent: "SKYZ SQUAD", score: "3 - 1 Win", date: "Jan 2025" },
+  { opponent: "Nova Volley", score: "4 - 4 Draw", date: "Dec 2024" },
+  { opponent: "Team Eclipse", score: "1 - 3 Loss", date: "Dec 2024" }
+];
+
+const scrimGrid = document.getElementById("scrimGrid");
+
+scrims.forEach(s => {
+  scrimGrid.innerHTML += `
+    <div class="scrim-card fade-up">
+      <h3 class="scrim-title">vs ${s.opponent}</h3>
+      <p class="scrim-score">${s.score}</p>
+      <p class="scrim-date">${s.date}</p>
+    </div>
+  `;
+});
