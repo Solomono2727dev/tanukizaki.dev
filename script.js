@@ -94,31 +94,61 @@ const loadingTick = setInterval(()=>{
 }, 90);
 
 /* ===========================
-   THEME (light/dark) toggle
+   THEME (light/dark) toggle — improved + persistent + smooth
    =========================== */
 const themeToggle = $("#themeToggle");
+
 function applySavedTheme(){
-  const t = localStorage.getItem("siteTheme");
-  if(t === "light"){ document.body.classList.add("light"); themeToggle.textContent = "☀️"; }
-  else { document.body.classList.remove("light"); themeToggle.textContent = "🌙"; }
+  const saved = localStorage.getItem("siteTheme");
+  if(saved === "light"){
+    document.body.classList.add("light");
+    themeToggle.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeToggle.textContent = "🌙";
+  }
 }
+// call on load
 applySavedTheme();
+
 themeToggle.addEventListener("click", ()=>{
   const isLight = document.body.classList.toggle("light");
   localStorage.setItem("siteTheme", isLight ? "light" : "dark");
+
+  // smooth visual flip: button icon + subtle transition already handled by CSS transitions
   themeToggle.textContent = isLight ? "☀️" : "🌙";
 });
 
 /* ===========================
-   SCROLL REVEAL (IntersectionObserver)
+   SMOOTH SCROLL FOR NAV LINKS
+   =========================== */
+document.querySelectorAll('#navbar a[href^="#"]').forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute("href"));
+    if(!target) return;
+    window.scrollTo({
+      top: target.offsetTop - 80, // offset so navbar doesn't overlap
+      behavior: "smooth"
+    });
+  });
+});
+
+/* ===========================
+   SCROLL REVEAL (robust IntersectionObserver)
    =========================== */
 const reveals = $$(".reveal");
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add("show");
+
+const revealObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      obs.unobserve(entry.target); // animate once then unobserve
+    }
   });
 }, { threshold: 0.18 });
-reveals.forEach(r => io.observe(r));
+
+reveals.forEach(r => revealObserver.observe(r));
 
 /* ===========================
    STAFF CARDS RENDER
@@ -160,7 +190,7 @@ function renderStaff(){
       <p>${s.role}</p>
     `;
     wrap.appendChild(card);
-    io.observe(card);
+    revealObserver.observe(card);
   });
 }
 renderStaff();
@@ -313,9 +343,7 @@ document.addEventListener("click", (e)=>{
    Initialization done
    =========================== */
 document.addEventListener("DOMContentLoaded", ()=>{
-  // ensure reveal check run at start
-  reveals.forEach(r => r.classList.remove("show"));
-  setTimeout(()=> {
-    revealOnScroll();
-  }, 300);
+  // ensure reveal check run at start (we already observe)
+  // keep previous behavior: run an initial reveal check in case some elements are in view
+  // (the IntersectionObserver handles this automatically when observed)
 });
