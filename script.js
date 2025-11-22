@@ -150,95 +150,56 @@ const revealObserver = new IntersectionObserver((entries, obs) => {
 
 reveals.forEach(r => revealObserver.observe(r));
 
-/* ===========================
-   STAFF CARDS RENDER
-   =========================== */
+/* ============================
+   STAFF CARDS — STATIC AVATARS
+============================ */
+
 const staffList = [
-  {
-    role: "Founder",
-    name: "Meow",
-    id: "1275059869799415819",
-    avatar: "https://cdn.discordapp.com/avatars/1275059869799415819/651799a021d82a51d8bfc000778f047a.webp?size=1024"
-  },
-  {
-    role: "Co Owner",
-    name: "Lisa",
-    id: "1000315559868645427",
-    avatar: "https://cdn.discordapp.com/avatars/1000315559868645427/a9ae4fe9100672c393fc58424ef24813.webp?size=1024"
-  },
-  {
-    role: "Co Owner",
-    name: "SleePy",
-    id: "889306635456106506",
-    avatar: "https://cdn.discordapp.com/avatars/889306635456106506/193b8d7f6f989a3a0ef98206b98d22da.webp?size=1024"
-  },
-  {
-    role: "General Manager",
-    name: "Seahl",
-    id: "925634940408856686",
-    avatar: "https://cdn.discordapp.com/avatars/925634940408856686/0de96adc5aaad4dfbd91461c4003d7f6.webp?size=1024"
-  },
-  {
-    role: "Administrator",
-    name: "Jake",
-    id: "1308500243448336478",
-    avatar: "https://cdn.discordapp.com/avatars/1308500243448336478/5f4dbbd2bd893485eb06dcf7a22ce40d.webp?size=1024"
-  },
-  {
-    role: "Administrator",
-    name: "Piorun",
-    id: "1356076318319575190",
-    avatar: "https://cdn.discordapp.com/avatars/925634940408856686/0de96adc5aaad4dfbd91461c4003d7f6.webp?size=1024"
-  },
-  {
-    role: "Administrator",
-    name: "Zal",
-    id: "747060313597411380",
-    avatar: "https://cdn.discordapp.com/avatars/747060313597411380/932ff85c2fcc96cb359c58fcd4ce4bb6.webp?size=1024"
-  },
-  {
-    role: "Administrator",
-    name: "Azy",
-    id: "907189767731568660",
-    avatar: "https://cdn.discordapp.com/avatars/907189767731568660/24a5a12d59c5a11085af851c9e85489c.webp?size=1024"
-  },
-  {
-    role: "Community Manager",
-    name: "Dogo",
-    id: "1335596631374041181",
-    avatar: "https://cdn.discordapp.com/avatars/1335596631374041181/2ca301dfb94e1175ce8a7c94b5f106ab.webp?size=1024"
-  },
-  {
-    role: "Moderator",
-    name: "Abyss",
-    id: "1046159416082305115",
-    avatar: "https://cdn.discordapp.com/avatars/1046159416082305115/6dcd6e14547a36924f04c67f12da2181.webp?size=1024"
-  },
-  {
-    role: "Moderator",
-    name: "Fish",
-    id: "1082216499445518397",
-    avatar: "https://cdn.discordapp.com/avatars/1082216499445518397/d9f6c210f96f080476f5a2fa885313bd.webp?size=1024"
-  },
-  {
-    role: "Moderator",
-    name: "Qin",
-    id: "957506592784388096",
-    avatar: "https://cdn.discordapp.com/avatars/957506592784388096/a326707988ae95df98b70bea0dea6771.webp?size=1024"
-  },
-  {
-    role: "Moderator",
-    name: "Elan",
-    id: "950386138651189258",
-    avatar: "https://cdn.discordapp.com/avatars/950386138651189258/da8650702d25709ff70345ca9bd9e68a.webp?size=1024"
-  },
-  {
-    role: "Moderator",
-    name: "Shivam",
-    id: "748050700092571659",
-    avatar: "https://cdn.discordapp.com/avatars/748050700092571659/a5ae1d674caa5c99efe28c7b33797daa.webp?size=1024"
-  }
+  { role: "Founder", name: "Meow", avatar: "https://cdn.discordapp.com/avatars/1275059869799415819/651799a021d82a51d8bfc000778f047a.webp?size=1024" },
+
+  { role: "Co Owner", name: "Lisa", avatar: "https://cdn.discordapp.com/avatars/1000315559868645427/a9ae4fe9100672c393fc58424ef24813.webp?size=1024" },
+  { role: "Co Owner", name: "SleePy", avatar: "https://cdn.discordapp.com/avatars/889306635456106506/193b8d7f6f989a3a0ef98206b98d22da.webp?size=1024" },
+
+  { role: "General Manager", name: "Seahl", avatar: "https://cdn.discordapp.com/avatars/925634940408856686/0de96adc5aaad4dfbd91461c4003d7f6.webp?size=1024" },
+
+  { role: "Administrator", name: "Jake", avatar: "https://cdn.discordapp.com/avatars/1308500243448336478/5f4dbbd2bd893485eb06dcf7a22ce40d.webp?size=1024" },
+  
+  // ❗ FIXED — Correct Discord ID for Piorun
+  { role: "Administrator", name: "Piorun", avatar: "https://cdn.discordapp.com/avatars/1356076318319575190/0de96adc5aaad4dfbd91461c4003d7f6.webp?size=1024" },
+
+  { role: "Administrator", name: "Zal", avatar: "https://cdn.discordapp.com/avatars/747060313597411380/932ff85c2fcc96cb359c58fcd4ce4bb6.webp?size=1024" },
+  { role: "Administrator", name: "Azy", avatar: "https://cdn.discordapp.com/avatars/907189767731568660/24a5a12d59c5a11085af851c9e85489c.webp?size=1024" },
+
+  { role: "Community Manager", name: "Dogo", avatar: "https://cdn.discordapp.com/avatars/1335596631374041181/2ca301dfb94e1175ce8a7c94b5f106ab.webp?size=1024" },
+
+  { role: "Moderator", name: "Abyss", avatar: "https://cdn.discordapp.com/avatars/1046159416082305115/6dcd6e14547a36924f04c67f12da2181.webp?size=1024" },
+  { role: "Moderator", name: "Fish", avatar: "https://cdn.discordapp.com/avatars/1082216499445518397/d9f6c210f96f080476f5a2fa885313bd.webp?size=1024" },
+  { role: "Moderator", name: "Qin", avatar: "https://cdn.discordapp.com/avatars/957506592784388096/a326707988ae95df98b70bea0dea6771.webp?size=1024" },
+  { role: "Moderator", name: "Elan", avatar: "https://cdn.discordapp.com/avatars/950386138651189258/da8650702d25709ff70345ca9bd9e68a.webp?size=1024" },
+  { role: "Moderator", name: "Shivam", avatar: "https://cdn.discordapp.com/avatars/748050700092571659/a5ae1d674caa5c99efe28c7b33797daa.webp?size=1024" }
 ];
+
+function renderStaffCards() {
+  const container = document.getElementById("staffContainer");
+  container.innerHTML = "";
+
+  staffList.forEach(staff => {
+    const card = document.createElement("div");
+    card.className = "staff-card";
+
+    card.innerHTML = `
+      <div class="avatar">
+        <img src="${staff.avatar}" alt="${staff.name}'s Avatar" />
+      </div>
+      <h3>${staff.name}</h3>
+      <p>${staff.role}</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+renderStaffCards();
 
 
 function getDiscordAvatarUrl(id){
@@ -440,5 +401,6 @@ scrims.forEach(s => {
     </div>
   `;
 });
+
 
 
