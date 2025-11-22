@@ -1,115 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tanukizaki — VBL Community</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanukizaki</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- PARTICLE CANVAS -->
-  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+<div id="loader">
+    <div class="loader-text typewriter">Loading...</div>
+    <div class="loader-bar"></div>
+</div>
 
-  <!-- LOADING SCREEN -->
-  <div id="loading-screen" role="status" aria-live="polite">
-    <div id="loading-text">Loading</div>
-    <div id="loading-bar-container">
-      <div id="loading-bar"></div>
+<header id="navbar">
+    <div class="logo">Tanukizaki</div>
+    <nav>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#staff" class="nav-link">Staff</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#todo" class="nav-link">Homework</a>
+    </nav>
+    <button id="themeToggle">🌙</button>
+</header>
+
+<canvas id="particles"></canvas>
+
+<section id="home" class="section fade-up">
+    <h1 class="hero-title">Tanukizaki</h1>
+    <p class="hero-sub">A modern VBL server + Community</p>
+    <p class="hero-desc">We are a growing VBL community — friendly, fun, and well-operated. Join us now!</p>
+    <a href="#" class="btn">Join Us!</a>
+
+    <div id="liveWidget" class="widget fade-up">
+        <h3>Live Members</h3>
+        <p id="memberCount">Loading...</p>
     </div>
-  </div>
+</section>
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="nav-left">
-      <div class="logo">Tanukizaki</div>
+<section id="staff" class="section fade-up">
+    <h2>Staff Team</h2>
+    <div class="staff-grid" id="staffGrid"></div>
+</section>
+
+<section id="todo" class="section fade-up">
+    <div id="todoWidget" class="widget">
+        <h3>Daily Homework</h3>
+
+        <label>Username</label>
+        <input type="text" id="usernameInput" placeholder="Your username">
+
+        <label>Required Link</label>
+        <input type="text" id="linkInput" placeholder="Paste your link">
+
+        <div class="task"><input type="checkbox" class="chk"> ★10x block sets</div>
+        <div class="task"><input type="checkbox" class="chk"> ★Spike sets</div>
+        <div class="task"><input type="checkbox" class="chk"> ★Delay sets</div>
+        <div class="task"><input type="checkbox" class="chk"> ★Normal sets</div>
+        <div class="task"><input type="checkbox" class="chk"> ★20x desyncs</div>
+        <div class="task"><input type="checkbox" class="chk"> ★10x delay glides(inwards and outwards)</div>
+        <div class="task"><input type="checkbox" class="chk"> ★Non delay glides</div>
+
+        <button id="submitHW" disabled>Submit</button>
     </div>
-    <div class="nav-right">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#staff">Staff</a>
-      <a href="#updates">Updates</a>
-      <a href="#join">Join</a>
-      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
-    </div>
-  </nav>
+</section>
 
-  <!-- LIVE MEMBER WIDGET (top-left, under navbar) -->
-  <div id="liveWidget" role="status" aria-live="polite">
-    <span class="live-label">Live Members:</span>
-    <span id="liveCount">—</span>
-  </div>
+<footer>
+    <p>© 2025 Tanukizaki Community</p>
+</footer>
 
-  <!-- RIGHT-SIDE TODO MINIMIZED BUTTON -->
-  <button id="todoToggle" aria-label="Open To-Do widget">📘</button>
-
-  <!-- RIGHT-SIDE TODO WIDGET (hidden by default) -->
-  <aside id="todoWidget" aria-hidden="true">
-    <h3>To Do List</h3>
-
-    <label for="todoUsername">Username (required)</label>
-    <input id="todoUsername" type="text" placeholder="Enter your username" />
-
-    <label for="todoLink">Link (required)</label>
-    <input id="todoLink" type="url" placeholder="https://..." />
-
-    <div class="tasks">
-      <label><input type="checkbox" class="task" data-task="10x block sets"> 10x block sets</label>
-      <label><input type="checkbox" class="task" data-task="Spike sets"> Spike sets</label>
-      <label><input type="checkbox" class="task" data-task="Delay sets"> Delay sets</label>
-      <label><input type="checkbox" class="task" data-task="Normal sets"> Normal sets</label>
-      <label><input type="checkbox" class="task" data-task="20x desyncs"> 20x desyncs</label>
-      <label><input type="checkbox" class="task" data-task="10x delay glides"> 10x delay glides (in/out)</label>
-      <label><input type="checkbox" class="task" data-task="Non delay glides"> Non delay glides</label>
-    </div>
-
-    <button id="submitTodo" disabled>Submit</button>
-    <div id="todoStatus" aria-live="polite"></div>
-  </aside>
-
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- HERO -->
-    <section id="home" class="section reveal">
-      <h1 class="hero-title">Tanukizaki</h1>
-      <p class="hero-sub">A modern VBL server + Community</p>
-      <p class="hero-desc">We are a growing VBL community — friendly, fun, and well-operated. Join us now!</p>
-      <a class="btn" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Us</a>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section reveal">
-      <h2>About Us</h2>
-      <p>
-        Our Founder, Meow, started Tanukizaki with the mission to create a friendly and well-run VBL community.
-        We improve operations daily and welcome all players.
-      </p>
-    </section>
-
-    <!-- STAFF -->
-    <section id="staff" class="section reveal">
-      <h2>Staff Team</h2>
-      <div id="staffContainer" class="staff-grid" aria-live="polite"></div>
-    </section>
-
-    <!-- UPDATES -->
-    <section id="updates" class="section reveal">
-      <h2>Updates</h2>
-      <p>Latest updates will appear here.</p>
-    </section>
-
-    <!-- JOIN -->
-    <section id="join" class="section reveal">
-      <h2>Join Us</h2>
-      <p>We are a gaming VBL community — friendly, fun, and the most well-operated server! Join us now!</p>
-      <a class="btn" href="https://discord.gg/TVJdth4fsu" target="_blank" rel="noopener">Join Discord</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>Developed by: Solomon</p>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
