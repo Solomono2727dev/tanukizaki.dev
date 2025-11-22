@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 // Your bot token (keep secret)
-const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
+const BOT_TOKEN = "MTQ0MDk2NTE2MDYwMzc0NjM1NA.GVz7rm.kxc2rt5Y_vrgbJbBcn1DvkDIZWsRgY5pAE7fkw";
 
 // Staff list
 const staffMembers = [
